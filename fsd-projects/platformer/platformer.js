@@ -1,5 +1,3 @@
-const { createRef } = require("react");
-
 $(function () {
   // initialize canvas and context when able to
   canvas = document.getElementById("canvas");
