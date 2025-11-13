@@ -36,22 +36,22 @@ $(function () {
     createPlatform(350, 250, 200, 50);
     createPlatform(1050, 250, 200, 50);
     createPlatform(1050, 500, 200, 50);
-
-
+    createPlatform(50, 150, 250, 50);
+    
 
 
     // TODO 3 - Create Collectables
-    createCollectable("database", 375, 50);
-    createCollectable("database", 1000, 500);
-    createCollectable("database", 110, 375);
+    createCollectable("database", 800, 225,);
+    createCollectable("database", 400, 225);
+    createCollectable("database", 1210, 225);
 
 
 
     
     // TODO 4 - Create Cannons
-    createCannon("left", 375 , 200 , 50);
-    createCannon("bottom", 1000, 0);
-    createCannon("right", 370 , 200 , 50);
+    createCannon("left", 375, 1050);
+    createCannon("bottom", 1000, 1000);
+    createCannon("right", 370 , 1250);
 
 
     
