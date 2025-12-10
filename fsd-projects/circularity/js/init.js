@@ -43,9 +43,9 @@ var init = function (window) {
 
 
         // TODO 7 : Use a loop to create multiple circles
-      for (var i= 0; i < 10; i++) {
-        drawCircle();
-      }
+        for (var i= 0; i < 100; i++) {
+            drawCircle();
+            }
 
 
 
@@ -67,15 +67,18 @@ var init = function (window) {
             physikz.updatePosition(circles[4]);
             
             // TODO 5 : Call game.checkCirclePosition() on your circles
-           game.checkCirclePosition(game.circles[0]);
-           game.checkCirclePosition(game.circles[1]);
-           game.checkCirclePosition(game.circles[2]);
-           game.checkCirclePosition(game.circles[3]);
-           game.checkCirclePosition(game.circles[4]);
+           game.checkCirclePosition(circles[0]);
+           game.checkCirclePosition(circles[1]);
+           game.checkCirclePosition(circles[2]);
+           game.checkCirclePosition(circles[3]);
+           game.checkCirclePosition(circles[4]);
            
 
             // TODO 8 / TODO 9 : Iterate over the array
-           
+           for (var i = 0; i < circle.length; i++) {
+            physikz.updatePosition(circles[i]);
+            game.checkCirclePosition(circles[i]);
+           }
             
         }
     
@@ -92,11 +95,21 @@ var init = function (window) {
             }
             
             // TODO 6 : YOUR CODE STARTS HERE //////////////////////
+           game.checkCirclePosition = function(circle){
+
+            if (circle.x > canvas.width){
+                circle.x = 0;
+            }
+
             if (circle.x < 0) {
                 circle.x = canvas.width;
          }
-
-
+            if(circle.y > canvas.height){
+                circle.y = 0;
+            }
+            if(circle.y < 0) {
+                circle.y = canvas.height;
+            }
             // YOUR TODO 6 CODE ENDS HERE //////////////////////////
         }
         
@@ -121,4 +134,5 @@ if((typeof process !== 'undefined') &&
     (typeof process.versions.node !== 'undefined')) {
     // here, export any references you need for tests //
     module.exports = init;
+}
 }
