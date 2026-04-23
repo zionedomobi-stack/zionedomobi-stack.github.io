@@ -19,6 +19,12 @@ function runProgram(){
   RIGHT: ___,
   DOWN: ___,
 };
+ var walker = {
+  x: 0,
+  y: 0,
+  speedX: 0,
+  speedY: 0
+};
 
   // one-time setup
   var interval = setInterval(newFrame, FRAMES_PER_SECOND_INTERVAL);   // execute newFrame every 0.0166 seconds (60 Frames per second)
@@ -58,8 +64,38 @@ function runProgram(){
    }
    if (event.which === KEY.UP) {
   console.log("up pressed");
-
    }
+    if (event.which === KEY.RIGHT) {
+  console.log("right pressed");
+}
+ if (event.which === KEY.DOWN) {
+  console.log("down pressed");
+}
+}
+function handleKeyDown(event) {
+  // Use event.which to detect the numeric key code
+  // Left Arrow: 37, Up Arrow: 38, Right Arrow: 39, Down Arrow: 40
+
+  if (event.which === 37) {
+    walker.speedX = -5;
+    console.log("Left pressed");
+  } 
+  
+  else if (event.which === 38) {
+    walker.speedY = -5;
+    console.log("Up pressed");
+  } 
+  
+  else if (event.which === 39) {
+    walker.speedX = 5;
+    console.log("Right pressed");
+  } 
+  
+  else if (event.which === 40) {
+    walker.speedY = 5;
+    console.log("Down pressed");
+  }
+}
   ////////////////////////////////////////////////////////////////////////////////
   ////////////////////////// HELPER FUNCTIONS ////////////////////////////////////
   ////////////////////////////////////////////////////////////////////////////////
@@ -72,5 +108,22 @@ function runProgram(){
     // turn off event handlers
     $(document).off();
   }
-  
+
+   repositionGameItem() {
+   walker.x += walker.speedX;
+  walker.y += walker.speedY;
+   }
+  function newFrame() {
+    // Other frame updates
+    repositionGameItem(); 
+  }
+
+
+function redrawGameItem() {
+  $("#walker").css("left", walker.x);
+  $("#walker").css("top", walker.y);
+}
+function newFrame() {
+  repositionGameItem(); // Updates the data (x and y)
+  redrawGameItem();     // Updates the screen (CSS)
 }
